@@ -17,7 +17,9 @@ const logs = (state = initialState, action) => {
         error: null,
         loading: false,
         data: action.payload.data,
-        logs: action.payload.logs
+        logs: action.payload.logs,
+        lat: action.payload.lat,
+        long: action.payload.long
       }
     case 'GET_LOGS_FAILED':
       return {

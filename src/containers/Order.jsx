@@ -5,6 +5,7 @@ import Logs from '../store/actions/Logs'
 import DataTable from '../components/DetailTable'
 import LogTable from '../components/LogTable'
 import axios from 'axios'
+import Map from '../components/Map'
 
 const mapStateToProps = state => {
   return{
@@ -45,8 +46,19 @@ class Order extends Component {
   render() {
     return (
       <div className="Home">
+        <br/><br/>
         <h1>Details</h1>
         <DataTable order={this.props.order} date={this.props.order.newDate}/>
+        <br/><br/>
+        <h1>Shock Map</h1>
+          {
+            this.props.logs.loading ? (<h1>loading</h1>) :
+            <div>
+              <Map logs={this.props.logs} lat={this.props.logs.lat} long={this.props.logs.long}/>
+            </div>
+          }
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <h1>Shock Logs</h1>
         <LogTable logs={this.props.logs}/>
       </div>

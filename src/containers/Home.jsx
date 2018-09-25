@@ -39,6 +39,7 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
+        <br/><br/>
         <h1>Parcel Tracker</h1>
         <DataTable orders={this.props.orders.data}/>
       </div>

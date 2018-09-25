@@ -13,7 +13,7 @@ class Logs {
             orderLog.push(log)
           }
         })
-        dispatch({type:'GET_LOGS_SUCCESS', payload: {data: logs.data, logs: orderLog}})
+        dispatch({type:'GET_LOGS_SUCCESS', payload: {data: logs.data, logs: orderLog, lat: orderLog[0].lat, long: orderLog[0].long}})
       })
       .catch(err=>{
         dispatch({type:'GET_LOGS_FAILED', payload: err})
