@@ -15,9 +15,9 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <Navbar/>
           <Router>
             <div>
+              <Navbar/>
               <Switch>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/order/:orderId" component={Order} />

@@ -15,7 +15,7 @@ const logs = (state = initialState, action) => {
       return {
         error: null,
         loading: false,
-        data: action.payload
+        data: action.payload.data
       }
     case 'GET_LOGS_FAILED':
       return {

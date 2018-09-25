@@ -1,11 +1,16 @@
 import axios from 'axios'
 
 class Orders {
-  static getOrders(){
+  static getOrders(token){
     return(dispatch) =>{
       dispatch({type: 'GET_ORDERS_REQUEST'})
-      axios.get('https://parcelpintarapi.joanlamrack.me/orders')
+      axios.get('https://parcelpintarapi.joanlamrack.me/orders',{
+        headers: {
+          token: token
+        }
+      })
       .then(orders=>{
+        console.log(orders);
         dispatch({type:'GET_ORDERS_SUCCESS', payload: orders.data})
       })
       .catch(err=>{

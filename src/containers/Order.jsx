@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Orders from '../store/actions/Orders'
-import DataTable from '../components/Table'
+import DataTable from '../components/DetailTable'
 
 const mapStateToProps = state => {
   return{
-    orders: state.orders
+    order: state.orders
   }
 }
 
@@ -24,7 +24,7 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <h1>This will be the admin page</h1>
+        <h1>Logs</h1>
         <h1>{JSON.stringify(this.props.orders)}</h1>
         <DataTable/>
       </div>

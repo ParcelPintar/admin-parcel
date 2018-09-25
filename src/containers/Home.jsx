@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Orders from '../store/actions/Orders'
 import DataTable from '../components/Table'
+import axios from 'axios'
 
 const mapStateToProps = state => {
   return{
@@ -11,15 +12,29 @@ const mapStateToProps = state => {
 
 const mapDistpatchToProps = dispatch => {
   return {
-    getOrders: () => {
-      dispatch(Orders.getOrders())
+    getOrders: (token) => {
+      dispatch(Orders.getOrders(token))
     }
   }
 }
 
 class Home extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      email: 'admin@gmail.com',
+      password: 'admin123'
+    }
+  }
   componentDidMount(){
-    this.props.getOrders()
+    axios.post('https://parcelpintarapi.joanlamrack.me/users/login',{email: this.state.email, password: this.state.password})
+    .then(res=>{
+      this.props.getOrders(res.data.token)
+      console.log(res.data.token);
+    })
+    .catch(err=>{
+      console.log(err);
+    })
   }
   render() {
     return (
