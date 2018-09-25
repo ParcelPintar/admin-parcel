@@ -3,25 +3,24 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect} from 'react-rou
 import store from './store'
 import { Provider } from 'react-redux'
 
-import logo from './assets/logo.png';
-import './App.css';
+import './styles/App.css';
 import { Button } from 'reactstrap';
 
 import Home from './containers/Home'
+import Order from './containers/Order'
+import Navbar from './components/Navbar'
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
         <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" to="/"/>
-            <h1 className="App-title">Admin Webpage</h1>
-          </header>
+          <Navbar/>
           <Router>
             <div>
               <Switch>
                 <Route exact path="/" component={Home} />
+                <Route exact path="/order/:orderId" component={Order} />
               </Switch>
             </div>
           </Router>

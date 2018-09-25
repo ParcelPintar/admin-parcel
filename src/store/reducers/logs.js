@@ -4,20 +4,20 @@ const initialState = {
   data: []
 }
 
-const orders = (state = initialState, action) => {
+const logs = (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_ORDERS_REQUEST':
+    case 'GET_LOGS_REQUEST':
       return {
         ...state,
         loading: true
       }
-    case 'GET_ORDERS_SUCCESS':
+    case 'GET_LOGS_SUCCESS':
       return {
         error: null,
         loading: false,
         data: action.payload
       }
-    case 'GET_ORDERS_FAILED':
+    case 'GET_LOGS_FAILED':
       return {
         error: true,
         loading: false,
@@ -28,4 +28,4 @@ const orders = (state = initialState, action) => {
   }
 }
 
-export default orders
+export default logs
