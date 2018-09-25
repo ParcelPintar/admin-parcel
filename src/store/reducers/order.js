@@ -2,24 +2,26 @@ const initialState = {
   loading: false,
   error: false,
   data: [],
-  logs: []
+  address: null,
+  newDate: null 
 }
 
-const logs = (state = initialState, action) => {
+const order = (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_LOGS_REQUEST':
+    case 'GET_ORDER_REQUEST':
       return {
         ...state,
         loading: true
       }
-    case 'GET_LOGS_SUCCESS':
+    case 'GET_ORDER_SUCCESS':
       return {
         error: null,
         loading: false,
         data: action.payload.data,
-        logs: action.payload.logs
+        address: action.payload.address,
+        newDate: action.payload.newDate
       }
-    case 'GET_LOGS_FAILED':
+    case 'GET_ORDER_FAILED':
       return {
         error: true,
         loading: false,
@@ -30,4 +32,4 @@ const logs = (state = initialState, action) => {
   }
 }
 
-export default logs
+export default order

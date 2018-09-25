@@ -4,28 +4,31 @@ import { Link } from 'react-router-dom'
 import '../styles/Table.css';
 
 export default class DetailTable extends React.Component {
+  timeConvert(time){
+    let newDate = new Date(time)
+    return newDate
+  }
   render() {
     return (
       <Table hover>
         <thead>
           <tr>
-            <th>#</th>
-            <th>Parcel ID</th>
-            <th>Longitude</th>
-            <th>Latitude</th>
-            <th>Time</th>
-            <th>Location</th>
+            <th>Order ID</th>
+            <th>Status</th>
+            <th>Address</th>
+            <th>Order Time</th>
           </tr>
         </thead>
         <tbody>
+        {
+          this.props.order.loading ? (<h1>loading</h1>) :
           <tr>
-            <th scope="row">1</th>
-            <td>1@$4oihoho12123jp</td>
-            <td className="text-info">Pickup</td>
-            <td className="text-info">Pickup</td>
-            <td className="text-info">Pickup</td>
-            <td><Link to={`/order/123`}><Button color="warning">Maps</Button></Link></td>
+            <td>{this.props.order.data._id}</td>
+            <td>{this.props.order.data.status}</td>
+            <td>{this.props.order.address}</td>
+            <td>{this.props.date}</td>
           </tr>
+        }
         </tbody>
       </Table>
     );

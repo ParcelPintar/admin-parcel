@@ -39,9 +39,8 @@ class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <h1>This will be the admin page</h1>
-        <h1>{JSON.stringify(this.props.orders)}</h1>
-        <DataTable/>
+        <h1>Parcel Tracker</h1>
+        <DataTable orders={this.props.orders.data}/>
       </div>
     )
   }

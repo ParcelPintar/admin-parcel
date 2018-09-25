@@ -1,35 +1,57 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Orders from '../store/actions/Orders'
+import Logs from '../store/actions/Logs'
 import DataTable from '../components/DetailTable'
+import LogTable from '../components/LogTable'
+import axios from 'axios'
 
 const mapStateToProps = state => {
   return{
-    order: state.orders
+    order: state.order,
+    logs: state.logs
   }
 }
 
 const mapDistpatchToProps = dispatch => {
   return {
-    getOrders: () => {
-      dispatch(Orders.getOrders())
+    getOrder: (id, token) => {
+      dispatch(Orders.getOrder(id, token))
+    },
+    getLogs: (id) => {
+      dispatch(Logs.getLogs(id))
     }
   }
 }
 
-class Home extends Component {
+class Order extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      email: 'admin@gmail.com',
+      password: 'admin123'
+    }
+  }
   componentDidMount(){
-    this.props.getOrders()
+    axios.post('https://parcelpintarapi.joanlamrack.me/users/login',{email: this.state.email, password: this.state.password})
+    .then(res=>{
+      this.props.getOrder(this.props.match.params.orderId, res.data.token)
+      this.props.getLogs(this.props.match.params.orderId)
+    })
+    .catch(err=>{
+      console.log(err);
+    })
   }
   render() {
     return (
       <div className="Home">
-        <h1>Logs</h1>
-        <h1>{JSON.stringify(this.props.orders)}</h1>
-        <DataTable/>
+        <h1>Details</h1>
+        <DataTable order={this.props.order} date={this.props.order.newDate}/>
+        <h1>Shock Logs</h1>
+        <LogTable logs={this.props.logs}/>
       </div>
     )
   }
 }
 
-export default connect(mapStateToProps, mapDistpatchToProps)(Home);
+export default connect(mapStateToProps, mapDistpatchToProps)(Order);
