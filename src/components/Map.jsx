@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import loading from '../assets/loading.gif'
 
 export class MapContainer extends React.Component {
   constructor (props) {
@@ -10,11 +11,9 @@ export class MapContainer extends React.Component {
   }
   getMarkers(){
     let markers = []
-    console.log('rogu desu',this.props.logs);
     this.props.logs.logs.forEach(log=>{
       markers.push({lat: log.lat, lng: log.long})
     })
-    console.log('makaa desu',markers);
     this.setState({
       markers: markers,
       initialCenter: markers[0]
@@ -27,7 +26,7 @@ export class MapContainer extends React.Component {
     return (
       <Fragment>
         {
-          this.props.logs.loading ? (<h1>loading</h1>) :
+          this.props.logs.loading ? (<img src={loading} class="loading" alt="loading"/>) :
           <Map
             google={this.props.google}
             initialCenter={{

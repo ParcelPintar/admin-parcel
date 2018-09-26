@@ -5,6 +5,7 @@ import Logs from '../store/actions/Logs'
 import DataTable from '../components/DetailTable'
 import LogTable from '../components/LogTable'
 import axios from 'axios'
+import loading from '../assets/loading.gif'
 import Map from '../components/Map'
 
 const mapStateToProps = state => {
@@ -52,7 +53,7 @@ class Order extends Component {
         <br/><br/>
         <h1>Shock Map</h1>
           {
-            this.props.logs.loading ? (<h1>loading</h1>) :
+            this.props.logs.loading ? (<img src={loading} className="logo" alt="logo"/>) :
             <div>
               <Map logs={this.props.logs} lat={this.props.logs.lat} long={this.props.logs.long}/>
             </div>

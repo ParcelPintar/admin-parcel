@@ -41,7 +41,7 @@ class Home extends Component {
       <div className="Home">
         <br/><br/>
         <h1>Parcel Tracker</h1>
-        <DataTable orders={this.props.orders.data}/>
+        <DataTable orders={this.props.orders}/>
       </div>
     )
   }
