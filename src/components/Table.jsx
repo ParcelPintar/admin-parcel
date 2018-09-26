@@ -8,19 +8,19 @@ export default class DataTable extends React.Component {
   render() {
     return (
       <Table class="table" hover>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Order ID</th>
+            <th>Status</th>
+            <th>Detail</th>
+          </tr>
+        </thead>
           {
             this.props.orders.loading ? (<img src={loading} class="loading" alt="loading"/>) :
             this.props.orders.data.map((order, index)=>{
               return(
                 <Fragment>
-                  <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Order ID</th>
-                      <th>Status</th>
-                      <th>Detail</th>
-                    </tr>
-                  </thead>
                   <tbody>
                     <tr key={index}>
                       <th scope="row">{index + 1}</th>
