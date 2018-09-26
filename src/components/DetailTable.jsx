@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react';
-import { Table, Button } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { Table } from 'reactstrap';
 import '../styles/Table.css';
 import loading from '../assets/loading.gif'
 

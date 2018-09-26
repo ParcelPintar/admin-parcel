@@ -30,7 +30,6 @@ class Home extends Component {
     axios.post('https://parcelpintarapi.joanlamrack.me/users/login',{email: this.state.email, password: this.state.password})
     .then(res=>{
       this.props.getOrders(res.data.token)
-      console.log(res.data.token);
     })
     .catch(err=>{
       console.log(err);

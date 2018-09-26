@@ -2,8 +2,6 @@ import React from 'react';
 import {
   Collapse,
   Navbar,
-  NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -19,7 +17,7 @@ export default class NavBar extends React.Component {
   render() {
     return (
       <div>
-        <Navbar class="navbar" color="dark" light expand="md">
+        <Navbar color="dark" light expand="md">
           <Link to={`/`}><img src={logo} className="logo" alt="logo"/></Link>
           <Collapse navbar>
             <Nav className="ml-auto" navbar>

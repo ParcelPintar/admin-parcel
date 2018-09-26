@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react';
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Map, Marker, GoogleApiWrapper} from 'google-maps-react';
 import loading from '../assets/loading.gif'
 
 export class MapContainer extends React.Component {
@@ -40,6 +40,7 @@ export class MapContainer extends React.Component {
               this.props.logs.logs.map((log, index)=>{
                 return (
                   <Marker
+                    key={index}
                     title={'Shock point'}
                     name={'Shock point'}
                     position={{lat: log.lat, lng: log.long}} />

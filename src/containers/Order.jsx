@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import Orders from '../store/actions/Orders'
 import Logs from '../store/actions/Logs'
@@ -49,20 +49,38 @@ class Order extends Component {
       <div className="Home">
         <br/><br/>
         <h1>Details</h1>
-        <DataTable order={this.props.order} date={this.props.order.newDate}/>
+        {
+          this.props.order.data.length === 0 ? (<h1>No data found</h1>):
+          <DataTable order={this.props.order} date={this.props.order.newDate}/>
+        }
         <br/><br/>
-        <h1>Shock Map</h1>
+        <div>
+          <h1>Shock Map</h1>
           {
             this.props.logs.loading ? (<img src={loading} className="logo" alt="logo"/>) :
             <div>
-              <Map logs={this.props.logs} lat={this.props.logs.lat} long={this.props.logs.long}/>
+              {
+                this.props.logs.data.length === 0 ? (<h1>No data found</h1>):
+                <Map logs={this.props.logs} lat={this.props.logs.lat} long={this.props.logs.long}/>
+              }
             </div>
           }
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        <h1>Shock Logs</h1>
-        <LogTable logs={this.props.logs}/>
+        </div>
+          {
+            this.props.logs.data.length === 0 ? (
+              <Fragment>
+                <br/><br/>
+                <h1>Shock Logs</h1>
+                <h1>No data found</h1>
+              </Fragment>
+            ):
+            <Fragment>
+              <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+              <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+              <h1>Shock Logs</h1>
+              <LogTable logs={this.props.logs}/>
+            </Fragment>
+          }
       </div>
     )
   }
