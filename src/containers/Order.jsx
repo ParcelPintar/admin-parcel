@@ -58,8 +58,9 @@ class Order extends Component {
               <Map logs={this.props.logs} lat={this.props.logs.lat} long={this.props.logs.long}/>
             </div>
           }
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <h1>Shock Logs</h1>
         <LogTable logs={this.props.logs}/>
       </div>
